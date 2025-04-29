@@ -4,7 +4,6 @@ extends Node
 	"Inventory",
 	"DebugCommands",
 	"ItemStorage",
-	"Player"
 ]
 var nodes = []
 

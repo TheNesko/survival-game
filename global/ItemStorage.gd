@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 var items_folder = "res://items"
