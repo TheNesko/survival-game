@@ -9,6 +9,8 @@ enum UseFunction { NONE, EQUIP}
 @export var id : int = 0
 @export var icon : Texture2D
 @export var mesh : Mesh
+@export var width : int
+@export var height : int
 @export var is_equippable : bool = false
 @export var equipment_slot : EquipmentSlot = EquipmentSlot.NONE
 @export var is_stackable : bool = false

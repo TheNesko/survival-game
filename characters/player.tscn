@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bc8mfluu54yop"]
+[gd_scene load_steps=16 format=3 uid="uid://bc8mfluu54yop"]
 
 [ext_resource type="Script" uid="uid://c2fnikb5b3xc" path="res://characters/scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://cl6a5g7rvrnq3" path="res://components/hurtbox.tscn" id="2_onrkg"]
@@ -8,9 +8,7 @@
 [ext_resource type="Script" uid="uid://0jjy4mfeabtw" path="res://components/scripts/PlayerStats.gd" id="7_eho78"]
 [ext_resource type="Script" uid="uid://crr0ejn5u5mnk" path="res://items/scripts/inventory.gd" id="7_j31ep"]
 [ext_resource type="Script" uid="uid://cbekpf2ko2b1u" path="res://items/scripts/equipment.gd" id="7_q605b"]
-[ext_resource type="PackedScene" uid="uid://dvtv06ack3mol" path="res://items/scripts/item_slot.tscn" id="8_6t23p"]
 [ext_resource type="Script" uid="uid://dbv0kjw2eq5vg" path="res://items/scripts/inventory_ui.gd" id="8_n8jd0"]
-[ext_resource type="Resource" uid="uid://bcau71rmcfvxu" path="res://items/data/axe.tres" id="11_eho78"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.610764
@@ -140,139 +138,3 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("8_n8jd0")
-
-[node name="HotbarPanel" type="Panel" parent="InventoryUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 330.0
-offset_top = 563.0
-offset_right = -330.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HotbarSlots" type="HBoxContainer" parent="InventoryUI/HotbarPanel" groups=["Hotbar"]]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="ItemSlot" parent="InventoryUI/HotbarPanel/HotbarSlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-item = ExtResource("11_eho78")
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot2" parent="InventoryUI/HotbarPanel/HotbarSlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot3" parent="InventoryUI/HotbarPanel/HotbarSlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot4" parent="InventoryUI/HotbarPanel/HotbarSlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot5" parent="InventoryUI/HotbarPanel/HotbarSlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot6" parent="InventoryUI/HotbarPanel/HotbarSlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="InventoryPanel" type="Panel" parent="InventoryUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 768.0
-offset_top = 119.0
-offset_right = -15.0
-offset_bottom = -107.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InventorySlots" type="GridContainer" parent="InventoryUI/InventoryPanel" groups=["Inventory"]]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = -7.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 4
-
-[node name="ItemSlot" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot2" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot3" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot4" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot5" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot6" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot7" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot8" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot9" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot10" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot11" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot12" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot13" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot14" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot15" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="ItemSlot16" parent="InventoryUI/InventoryPanel/InventorySlots" instance=ExtResource("8_6t23p")]
-layout_mode = 2
-metadata/_edit_lock_ = true

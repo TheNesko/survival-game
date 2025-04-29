@@ -1,9 +1,9 @@
 extends Node
 
 @onready var node_names = [
-	"Inventory",
 	"DebugCommands",
 	"ItemStorage",
+	"Inventory",
 ]
 var nodes = []
 
