@@ -126,7 +126,10 @@ func _suggest_commands(text):
 			var type_name = arg.class_name
 			if arg.class_name ==  "":
 				type_name = type_string(arg.type)
-			suggestion += arg.name + ":" + type_name + "  "
+			suggestion += arg.name
+			if type_name != type_string(TYPE_NIL):
+				suggestion += ":" + type_name
+			suggestion += "  "
 		suggested_commands.append({"command":command,"suggestion":suggestion})
 	_update_popup()
 
