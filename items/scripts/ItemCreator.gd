@@ -1,6 +1,6 @@
 @tool
 extends Node
-class_name ItemPrefab
+class_name ItemCreator
 
 @onready var folder = "res://items/"
 @export var data : ItemData
