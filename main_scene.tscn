@@ -10,18 +10,28 @@
 [ext_resource type="PackedScene" uid="uid://badl1ihqm06lc" path="res://items/Log.tscn" id="8_wr18j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8mm7a"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+sky_top_color = Color(0.358701, 0.425411, 0.518216, 1)
+sky_curve = 1e-05
+ground_bottom_color = Color(0.0667738, 0.0692853, 0.0155293, 1)
+ground_horizon_color = Color(0.356863, 0.423529, 0.517647, 1)
+ground_curve = 0.218567
+sun_curve = 0.0609189
 
 [sub_resource type="Sky" id="Sky_hq1ik"]
 sky_material = SubResource("ProceduralSkyMaterial_8mm7a")
+process_mode = 3
 
 [sub_resource type="Environment" id="Environment_nfk4m"]
 background_mode = 2
 sky = SubResource("Sky_hq1ik")
 tonemap_mode = 3
+ssr_enabled = true
 ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
 glow_enabled = true
+fog_mode = 1
+fog_density = 1.0
 adjustment_enabled = true
 adjustment_saturation = 1.5
 
@@ -55,7 +65,7 @@ shape = SubResource("BoxShape3D_0f027")
 mesh = SubResource("QuadMesh_2c62f")
 
 [node name="Player" parent="." instance=ExtResource("1_0f027")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02288, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02288, 1.52249)
 slide_on_ceiling = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
