@@ -187,7 +187,6 @@ func _insert_suggested_command():
 		# DO I EVEN WANT TO DO THAT?
 		if currently_editing <= len(command.args):
 			var arg = command.args[currently_editing-1]
-			print(arg.type)
 			var arguments = _suggest_command_argument_values(arg.type)
 			
 	console_input.set_text(text)

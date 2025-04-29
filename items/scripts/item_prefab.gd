@@ -38,7 +38,6 @@ func reload():
 	child.name = data.name
 	child.script = load("res://items/Item.gd")
 	self.add_child(child)
-	prints("add child", child)
 	child.owner = self
 	child.data = data
 	child.set_collision_layer_value(1, false)
@@ -54,7 +53,6 @@ func reload():
 	add_child(mesh)
 	mesh.owner = self
 	mesh.reparent(child)
-	prints("added",mesh)
 	mesh.create_convex_collision()
 	mesh.get_child(0).get_child(0).reparent(child)
 	mesh.get_child(0).queue_free()
@@ -62,7 +60,6 @@ func reload():
 func save():
 	var node_to_save = find_child(data.name)
 	if node_to_save == null: return
-	prints("saving",node_to_save)
 	var scene = PackedScene.new()
 	for child in node_to_save.get_children():
 		child.set_owner(node_to_save)
