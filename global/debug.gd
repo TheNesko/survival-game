@@ -1,13 +1,17 @@
 extends Control
 
+signal caret_column_changed
+
 enum Message {NORMAL, WARNING, ERROR}
-@onready var console_input = $ConsolePanel/Container/ConsoleInput
-@onready var popup = $ConsolePanel/Container/ConsoleInput/popup
+
 var console_input_commands = []
 var suggested_commands = []
 var current_suggested = 0
-
 var debuging : bool = true
+var _previous_caret_column = 0
+
+@onready var console_input = $ConsolePanel/Container/ConsoleInput
+@onready var popup = $ConsolePanel/Container/ConsoleInput/popup
 @onready var message_box = $ConsolePanel/Container/Message
 
 func _ready() -> void:
@@ -15,6 +19,7 @@ func _ready() -> void:
 	display_if_debuging()
 	console_input.text_changed.connect(_text_changed)
 	console_input.text_submitted.connect(_text_changed)
+	caret_column_changed.connect(_caret_column_changed)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug"):
@@ -32,13 +37,13 @@ func _input(_event: InputEvent) -> void:
 		if $ConsolePanel/Container/ConsoleInput/popup.visible:
 			_change_selected_suggestion(false)
 		elif len(console_input_commands) > 0:
-			console_input.set_text(console_input_commands[len(console_input_commands)-1])
-			console_input.set_caret_column(1000)
-			console_input.text_changed.emit()
+			_set_console_text(console_input_commands[len(console_input_commands)-1])
 	if Input.is_key_pressed(KEY_DOWN):
 		_change_selected_suggestion(true)
 	if Input.is_key_pressed(KEY_TAB) and len(suggested_commands) >= 1:
 		_insert_suggested_command()
+	if console_input.get_caret_column() != _previous_caret_column:
+		caret_column_changed.emit()
 
 func send_message(text: String="",type:Message=Message.NORMAL):
 	var line_color = "[color=grey]"
@@ -81,6 +86,7 @@ func launch_command(command_name:String,values):
 		if typeof(new_value) != arg_type:
 			var error_message = "Passed wrong argument " + command.args[arg].name
 			error_message += " of type " + type_string(typeof(new_value))
+			error_message += " but " + type_string(arg_type) + " was expected"
 			send_message(error_message,Message.WARNING)
 			return false
 		arguments.append(new_value)
@@ -105,7 +111,7 @@ func _get_string_size(text:String,ui_element):
 
 func _get_caret_position(ui):
 	var text = ui.text.left(ui.get_caret_column())
-	var pos = _get_string_size(ui.text,ui)
+	var pos = _get_string_size(text,ui)
 	return pos
 
 func _suggest_commands(text):
@@ -131,11 +137,10 @@ func _suggest_commands(text):
 				suggestion += ":" + type_name
 			suggestion += "  "
 		suggested_commands.append({"command":command,"suggestion":suggestion})
-	_update_popup()
 
 func _current_edited_argument():
 	var current = 0
-	var text = console_input.text
+	var text = console_input.text.left(console_input.get_caret_column())
 	for index in range(len(text)):
 		if index == 0 and text[index] == " ": continue
 		if text[index] == " " and text[index-1] != " ":
@@ -191,10 +196,7 @@ func _insert_suggested_command():
 		if currently_editing <= len(command.args):
 			var arg = command.args[currently_editing-1]
 			var arguments = _suggest_command_argument_values(arg.type)
-			
-	console_input.set_text(text)
-	console_input.text_changed.emit(text)
-	console_input.set_caret_column(1000)
+	_set_console_text(text)
 
 func _suggest_command_argument_values(type:int):
 	# TODO suggest command arguments
@@ -208,3 +210,12 @@ func _suggest_command_argument_values(type:int):
 func _text_changed(_text):
 	current_suggested = 0
 	_suggest_commands(console_input.text)
+	_update_popup()
+
+func _caret_column_changed():
+	_update_popup()
+
+func _set_console_text(text):
+	console_input.set_text(text)
+	console_input.set_caret_column(1000)
+	console_input.text_changed.emit(console_input.text)
