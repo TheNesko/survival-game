@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://boop5v0nj3dx6"]
+
+[ext_resource type="ArrayMesh" uid="uid://dvuq5jcuog2m6" path="res://assets/DungeonRemastered/obj/stairs.obj" id="1_l5oqe"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g0mii"]
+points = PackedVector3Array(0, 0, 0, 0, 0, 4.5, 0, 4.5, 0, 4.5, 4.5, 0, 4.5, 0, 0, 4.5, 0, 4.5)
+
+[node name="stairs" type="StaticBody3D"]
+collision_mask = 0
+
+[node name="Stairs" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_l5oqe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23507, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_g0mii")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://jtd82qeko76n"]
+
+[ext_resource type="Script" uid="uid://bv4cudsj3823i" path="res://items/item_prefab.gd" id="1_4jicw"]
+[ext_resource type="Resource" uid="uid://bmky64yfusivs" path="res://items/data/log.tres" id="2_h1kvi"]
+[ext_resource type="Script" uid="uid://dx7xj1wpom46m" path="res://items/Item.gd" id="3_4gwnh"]
+
+[node name="ItemPrefab" type="Node"]
+script = ExtResource("1_4jicw")
+data = ExtResource("2_h1kvi")
+
+[node name="Log" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 271
+script = ExtResource("3_4gwnh")
+data = ExtResource("2_h1kvi")

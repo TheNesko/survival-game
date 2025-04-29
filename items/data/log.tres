@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bmky64yfusivs"]
+
+[ext_resource type="Texture2D" uid="uid://d371dxote1ax7" path="res://items/icons/log_icon.png" id="1_3taaj"]
+[ext_resource type="ArrayMesh" uid="uid://ql057b5b5lge" path="res://items/models/log.res" id="1_31mol"]
+[ext_resource type="Script" uid="uid://cfg6mehh0rgvi" path="res://items/data/ItemData.gd" id="1_uw7er"]
+
+[resource]
+script = ExtResource("1_uw7er")
+name = "Log"
+id = 2
+icon = ExtResource("1_3taaj")
+mesh = ExtResource("1_31mol")
+is_equippable = false
+equipment_slot = 0
+is_stackable = true
+max_stack = 3
+quantity = 1
+use = 0
+stat_bonus = {}
+metadata/_custom_type_script = "uid://cfg6mehh0rgvi"

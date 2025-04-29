@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://25n150rq44ju"]
+
+[ext_resource type="Script" uid="uid://ccywbr4horjoo" path="res://enviroment/scripts/tree.gd" id="1_gvmkm"]
+[ext_resource type="PackedScene" uid="uid://cl6a5g7rvrnq3" path="res://components/hurtbox.tscn" id="2_gvmkm"]
+[ext_resource type="Script" uid="uid://o8qnhht2lmqa" path="res://components/scripts/StatsComponent.gd" id="2_hluxc"]
+[ext_resource type="Resource" uid="uid://bmky64yfusivs" path="res://items/data/log.tres" id="2_rg5g7"]
+[ext_resource type="PackedScene" uid="uid://cl7r3stw6fv2" path="res://enviroment/models/oak_tree_1.tscn" id="4_d2g23"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uc1xx"]
+height = 3.51025
+radius = 0.51416
+
+[node name="Tree" type="StaticBody3D" node_paths=PackedStringArray("stats")]
+transform = Transform3D(1.00081, 0, 0, 0, 1.00081, 0, 0, 0, 1.00081, 0, 0, 0)
+collision_layer = 256
+collision_mask = 78
+script = ExtResource("1_gvmkm")
+stats = NodePath("Stats")
+resource_drop = ExtResource("2_rg5g7")
+resource_quantity = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 1.75513, 0)
+shape = SubResource("CylinderShape3D_uc1xx")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("2_hluxc")
+base_stats = {
+"damage": 1,
+"health": 15,
+"max_health": 15
+}
+metadata/_custom_type_script = "uid://o8qnhht2lmqa"
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_gvmkm")]
+collision_mask = 80
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 1.75513, 0)
+shape = SubResource("CylinderShape3D_uc1xx")
+
+[node name="OakTree1" parent="." instance=ExtResource("4_d2g23")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.313865, 0)

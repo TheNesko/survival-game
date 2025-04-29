@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cm504mk8d7vyd"
+path="res://.godot/imported/wall_arched.obj-1c2d8b42569a866d1740370f4c152733.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall_arched.obj-1c2d8b42569a866d1740370f4c152733.mesh"]
+
+source_file="res://assets/DungeonRemastered/obj/wall_arched.obj"
+dest_files=["res://.godot/imported/wall_arched.obj-1c2d8b42569a866d1740370f4c152733.mesh", "res://.godot/imported/wall_arched.obj-1c2d8b42569a866d1740370f4c152733.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

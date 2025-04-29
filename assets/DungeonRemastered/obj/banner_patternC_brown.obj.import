@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ccvne2uyy8gpj"
+path="res://.godot/imported/banner_patternC_brown.obj-a9a555f89246bcbeed32167f36e674cb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/banner_patternC_brown.obj-a9a555f89246bcbeed32167f36e674cb.mesh"]
+
+source_file="res://assets/DungeonRemastered/obj/banner_patternC_brown.obj"
+dest_files=["res://.godot/imported/banner_patternC_brown.obj-a9a555f89246bcbeed32167f36e674cb.mesh", "res://.godot/imported/banner_patternC_brown.obj-a9a555f89246bcbeed32167f36e674cb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

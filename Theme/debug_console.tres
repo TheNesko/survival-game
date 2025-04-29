@@ -1,0 +1,98 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://beqjtku706na3"]
+
+[ext_resource type="FontFile" uid="uid://bjca1pauovepi" path="res://Theme/Font/Ubuntu-Regular.ttf" id="1_xk3mg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_am515"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xk3mg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vhxw"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_top = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3gpe"]
+bg_color = Color(0, 0, 0, 0.588235)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5vhxw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3gpe"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk3mg"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_am515"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31fyl"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0, 0, 0, 0.156863)
+border_width_top = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 3.0
+expand_margin_top = 1.0
+expand_margin_right = 3.0
+
+[resource]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 20
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_xk3mg")
+Label/styles/normal = SubResource("StyleBoxEmpty_am515")
+LineEdit/font_sizes/font_size = 14
+LineEdit/fonts/font = ExtResource("1_xk3mg")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_xk3mg")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_5vhxw")
+Panel/styles/panel = SubResource("StyleBoxFlat_d3gpe")
+RichTextLabel/font_sizes/normal_font_size = 14
+RichTextLabel/fonts/normal_font = ExtResource("1_xk3mg")
+RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_5vhxw")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_d3gpe")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_xk3mg")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_am515")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_xk3mg")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_31fyl")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_31fyl")

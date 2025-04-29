@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2f1354ef5vpc"]
+
+[ext_resource type="PackedScene" uid="uid://cl6a5g7rvrnq3" path="res://components/hurtbox.tscn" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://o8qnhht2lmqa" path="res://components/scripts/StatsComponent.gd" id="3_1ohc2"]
+[ext_resource type="PackedScene" uid="uid://b5xye2ssx7jf4" path="res://assets/Adventurers/Characters/fbx/Rogue.fbx" id="3_qi2p4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qi2p4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4gyqm"]
+radius = 0.548805
+height = 2.15362
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 267
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qi2p4")
+
+[node name="Hurtbox" parent="." instance=ExtResource("1_4gyqm")]
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape3D_4gyqm")
+
+[node name="Rogue" parent="." instance=ExtResource("3_qi2p4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00062, 0)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_1ohc2")
+metadata/_custom_type_script = "uid://o8qnhht2lmqa"

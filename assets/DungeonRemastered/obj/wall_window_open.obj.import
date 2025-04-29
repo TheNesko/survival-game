@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bds37bk3hx0dh"
+path="res://.godot/imported/wall_window_open.obj-e4b809ae432eb1aaa8a723dff8aadcde.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall_window_open.obj-e4b809ae432eb1aaa8a723dff8aadcde.mesh"]
+
+source_file="res://assets/DungeonRemastered/obj/wall_window_open.obj"
+dest_files=["res://.godot/imported/wall_window_open.obj-e4b809ae432eb1aaa8a723dff8aadcde.mesh", "res://.godot/imported/wall_window_open.obj-e4b809ae432eb1aaa8a723dff8aadcde.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

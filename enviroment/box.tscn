@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://qva270eo70bv"]
+
+[ext_resource type="Script" uid="uid://17rm2ayx0mjk" path="res://enviroment/scripts/box.gd" id="1_32cpv"]
+[ext_resource type="ArrayMesh" uid="uid://b4vt33falglft" path="res://enviroment/models/box_small.obj" id="1_g2tbl"]
+[ext_resource type="Texture2D" uid="uid://b7ft0jpe16ukd" path="res://enviroment/textures/dungeon_texture.png" id="2_8qpam"]
+[ext_resource type="PackedScene" uid="uid://cl6a5g7rvrnq3" path="res://components/hurtbox.tscn" id="4_32cpv"]
+[ext_resource type="Script" uid="uid://o8qnhht2lmqa" path="res://components/scripts/StatsComponent.gd" id="4_k5x6g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_juslf"]
+albedo_texture = ExtResource("2_8qpam")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2tbl"]
+size = Vector3(1, 1.00977, 1)
+
+[node name="box" type="StaticBody3D"]
+collision_layer = 256
+collision_mask = 78
+script = ExtResource("1_32cpv")
+
+[node name="BoxSmall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = ExtResource("1_g2tbl")
+surface_material_override/0 = SubResource("StandardMaterial3D_juslf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00488281, 0)
+shape = SubResource("BoxShape3D_g2tbl")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_k5x6g")
+metadata/_custom_type_script = "uid://o8qnhht2lmqa"
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_32cpv")]
+collision_mask = 80
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("BoxShape3D_g2tbl")

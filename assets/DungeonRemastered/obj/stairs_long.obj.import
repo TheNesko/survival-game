@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dydwiff5d8ro7"
+path="res://.godot/imported/stairs_long.obj-ca3cd0a3751e76d35d8d769aec05b679.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stairs_long.obj-ca3cd0a3751e76d35d8d769aec05b679.mesh"]
+
+source_file="res://assets/DungeonRemastered/obj/stairs_long.obj"
+dest_files=["res://.godot/imported/stairs_long.obj-ca3cd0a3751e76d35d8d769aec05b679.mesh", "res://.godot/imported/stairs_long.obj-ca3cd0a3751e76d35d8d769aec05b679.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

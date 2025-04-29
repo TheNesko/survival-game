@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://lk2647bfwmkj"
+path="res://.godot/imported/column.obj-7e92e1cd26a3c4bafafc3500f2c7aca4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/column.obj-7e92e1cd26a3c4bafafc3500f2c7aca4.mesh"]
+
+source_file="res://assets/DungeonRemastered/obj/column.obj"
+dest_files=["res://.godot/imported/column.obj-7e92e1cd26a3c4bafafc3500f2c7aca4.mesh", "res://.godot/imported/column.obj-7e92e1cd26a3c4bafafc3500f2c7aca4.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
