@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://qva270eo70bv" path="res://enviroment/box.tscn" id="2_2c62f"]
 [ext_resource type="PackedScene" uid="uid://d2f1354ef5vpc" path="res://characters/enemy.tscn" id="4_d5x1h"]
 [ext_resource type="PackedScene" uid="uid://25n150rq44ju" path="res://enviroment/tree.tscn" id="5_8mm7a"]
-[ext_resource type="PackedScene" uid="uid://b2yctfompda7g" path="res://items/Axe.tscn" id="6_66tet"]
+[ext_resource type="PackedScene" uid="uid://b2yctfompda7g" path="res://items/scenes/Axe.tscn" id="6_66tet"]
 [ext_resource type="PackedScene" uid="uid://boop5v0nj3dx6" path="res://enviroment/stairs.tscn" id="6_hq1ik"]
-[ext_resource type="PackedScene" uid="uid://ca5l8dpnhnte8" path="res://items/Dagger.tscn" id="7_7ycvg"]
-[ext_resource type="PackedScene" uid="uid://badl1ihqm06lc" path="res://items/Log.tscn" id="8_wr18j"]
+[ext_resource type="PackedScene" uid="uid://ca5l8dpnhnte8" path="res://items/scenes/Dagger.tscn" id="7_7ycvg"]
+[ext_resource type="PackedScene" uid="uid://badl1ihqm06lc" path="res://items/scenes/Log.tscn" id="8_wr18j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8mm7a"]
 sky_top_color = Color(0.358701, 0.425411, 0.518216, 1)

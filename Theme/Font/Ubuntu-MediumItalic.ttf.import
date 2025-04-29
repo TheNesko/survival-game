@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bc5ud3jkhh0e5"
-path="res://.godot/imported/Ubuntu-MediumItalic.ttf-b980a7789465394a007b55b235fefb24.fontdata"
+path="res://.godot/imported/Ubuntu-MediumItalic.ttf-7c21b866ef77213a841a490800df427c.fontdata"
 
 [deps]
 
-source_file="res://Theme/Font/Ubuntu-MediumItalic.ttf"
-dest_files=["res://.godot/imported/Ubuntu-MediumItalic.ttf-b980a7789465394a007b55b235fefb24.fontdata"]
+source_file="res://theme/Font/Ubuntu-MediumItalic.ttf"
+dest_files=["res://.godot/imported/Ubuntu-MediumItalic.ttf-7c21b866ef77213a841a490800df427c.fontdata"]
 
 [params]
 

@@ -15,7 +15,7 @@ run/main_scene="uid://ckqkrttd08sb8"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0.027451, 0.0980392, 0.137255, 1)
 boot_splash/image="uid://hjsfcl1sgd71"
-config/icon="res://icon.svg"
+config/icon="uid://hjsfcl1sgd71"
 
 [autoload]
 
@@ -142,5 +142,6 @@ hotbar_6={
 
 [rendering]
 
-anti_aliasing/quality/msaa_3d=2
-anti_aliasing/quality/screen_space_aa=1
+environment/ssao/quality=0
+environment/ssil/quality=0
+anti_aliasing/quality/msaa_3d=1

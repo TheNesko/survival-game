@@ -13,24 +13,29 @@ func _load_data():
 	if folder:
 		for file in folder.get_files():
 			var file_name = file.split(".",false,1)
-			if file_name[1] == "tres":
-				item_files.append(file_name[0])
+			if "tres" in file_name[1]:
+				if ".remap" in file_name[1]:
+					file = file.replace(".remap","")
+				item_files.append(file)
 	for item in range(len(item_files)):
-		var new_item = load(items_folder+"/data/"+item_files[item]+".tres")
+		var new_item = load(items_folder+"/data/"+item_files[item])
 		new_item.id = item
 		items[item] = {"data":null,"scene":null}
 		items[item]["data"] = new_item
 
 func _load_scenes():
 	var item_files = []
-	var folder = DirAccess.open(items_folder)
+	var folder = DirAccess.open(items_folder+"/scenes")
 	if folder:
 		for file in folder.get_files():
 			var file_name = file.split(".",false,1)
-			if file_name[1] == "tscn":
-				item_files.append(file_name[0])
+			if "tscn" in file_name[1]:
+				if ".remap" in file_name[1]:
+					file = file.replace(".remap","")
+				item_files.append(file)
+				DEBUG.send_message(str(file_name))
 	for item in range(len(item_files)):
-		var new_item = load(items_folder+"/"+item_files[item]+".tscn")
+		var new_item = load(items_folder+"/scenes/"+item_files[item])
 		items[item]["scene"] = new_item
 	
 

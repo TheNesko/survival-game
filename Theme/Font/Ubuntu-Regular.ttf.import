@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bjca1pauovepi"
-path="res://.godot/imported/Ubuntu-Regular.ttf-df431d97add7b4d07ca5eb8062713c32.fontdata"
+path="res://.godot/imported/Ubuntu-Regular.ttf-2295255f14a7fa2004b1ba7879636a98.fontdata"
 
 [deps]
 
-source_file="res://Theme/Font/Ubuntu-Regular.ttf"
-dest_files=["res://.godot/imported/Ubuntu-Regular.ttf-df431d97add7b4d07ca5eb8062713c32.fontdata"]
+source_file="res://theme/Font/Ubuntu-Regular.ttf"
+dest_files=["res://.godot/imported/Ubuntu-Regular.ttf-2295255f14a7fa2004b1ba7879636a98.fontdata"]
 
 [params]
 

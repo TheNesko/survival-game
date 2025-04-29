@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=11 format=3 uid="uid://beqjtku706na3"]
 
-[ext_resource type="FontFile" uid="uid://bjca1pauovepi" path="res://Theme/Font/Ubuntu-Regular.ttf" id="1_xk3mg"]
+[ext_resource type="FontFile" uid="uid://bjca1pauovepi" path="res://theme/Font/Ubuntu-Regular.ttf" id="1_xk3mg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_am515"]
 content_margin_left = 10.0

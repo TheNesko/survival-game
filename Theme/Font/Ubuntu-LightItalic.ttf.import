@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dcndf4cfh7dih"
-path="res://.godot/imported/Ubuntu-LightItalic.ttf-73f974daa25790142ef926303ffadf98.fontdata"
+path="res://.godot/imported/Ubuntu-LightItalic.ttf-6876ffb851d2f9ccecf0729902dedbd6.fontdata"
 
 [deps]
 
-source_file="res://Theme/Font/Ubuntu-LightItalic.ttf"
-dest_files=["res://.godot/imported/Ubuntu-LightItalic.ttf-73f974daa25790142ef926303ffadf98.fontdata"]
+source_file="res://theme/Font/Ubuntu-LightItalic.ttf"
+dest_files=["res://.godot/imported/Ubuntu-LightItalic.ttf-6876ffb851d2f9ccecf0729902dedbd6.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://s5wjxhrilogg"
-path="res://.godot/imported/Ubuntu-BoldItalic.ttf-40a9e4fc8ba9689e9d5369f3a0ff4012.fontdata"
+path="res://.godot/imported/Ubuntu-BoldItalic.ttf-793f375111cb1b87cf7b7eb590df1961.fontdata"
 
 [deps]
 
-source_file="res://Theme/Font/Ubuntu-BoldItalic.ttf"
-dest_files=["res://.godot/imported/Ubuntu-BoldItalic.ttf-40a9e4fc8ba9689e9d5369f3a0ff4012.fontdata"]
+source_file="res://theme/Font/Ubuntu-BoldItalic.ttf"
+dest_files=["res://.godot/imported/Ubuntu-BoldItalic.ttf-793f375111cb1b87cf7b7eb590df1961.fontdata"]
 
 [params]
 

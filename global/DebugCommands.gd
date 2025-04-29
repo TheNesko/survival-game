@@ -91,3 +91,18 @@ func looking_at():
 		DEBUG.send_message("Can't find entity",DEBUG.Message.WARNING)
 		return
 	DEBUG.send_message("Looking at " + entity.name)
+
+func show_items():
+	if ItemStorage.items.is_empty():
+		DEBUG.send_message("No items",DEBUG.Message.ERROR)
+	for item in ItemStorage.items:
+		item = ItemStorage.items[item]
+		if not item: continue
+		if not item.data: 
+			DEBUG.send_message("No data",DEBUG.Message.WARNING)
+			continue
+		if not item.scene:
+			DEBUG.send_message("No Scene",DEBUG.Message.WARNING)
+			continue
+		DEBUG.send_message(str(item.data.id)+"-"+item.data.name)
+		
