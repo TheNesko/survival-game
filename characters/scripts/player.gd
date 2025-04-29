@@ -1,18 +1,25 @@
 extends CharacterBody3D
 
-@onready var inventory = $Inventory
-
-# How fast the player moves in meters per second.
 @export var speed = 14
-# The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 30
 @export var jump_force = 7
+@export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
+@export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
+@export var CAMERA_CONTROLLER : Camera3D
+@export var MOUSE_SENSITIVITY : float = 0.5 
 
 var target_velocity = Vector3.ZERO
-
-@onready var interaction_ray = $InteractionRay
 var interaction_target = null
 var reach = 2.5
+var _mouse_input : bool = false
+var _mouse_rotation : Vector3
+var _rotation_input : float
+var _tilt_input : float
+var _player_rotation : Vector3
+var _camera_rotation : Vector3
+
+@onready var interaction_ray = $InteractionRay
+@onready var inventory = $Inventory
 
 func _init() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -72,24 +79,11 @@ func _physics_process(delta):
 	velocity = target_velocity
 	move_and_slide()
 
-var _mouse_input : bool = false
-var _mouse_rotation : Vector3
-var _rotation_input : float
-var _tilt_input : float
-var _player_rotation : Vector3
-var _camera_rotation : Vector3
-
-
 func _unhandled_input(event):
 	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	if _mouse_input :
 		_rotation_input = -event.relative.x * MOUSE_SENSITIVITY
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
-
-@export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
-@export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
-@export var CAMERA_CONTROLLER : Camera3D
-@export var MOUSE_SENSITIVITY : float = 0.5 
 
 func _update_camera(delta):
 	_mouse_rotation.x += _tilt_input * delta
