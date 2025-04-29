@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2yctfompda7g"]
 
-[ext_resource type="Script" uid="uid://dx7xj1wpom46m" path="res://items/Item.gd" id="1_kvrcl"]
+[ext_resource type="Script" uid="uid://dx7xj1wpom46m" path="res://items/scripts/Item.gd" id="1_kvrcl"]
 [ext_resource type="Resource" uid="uid://bcau71rmcfvxu" path="res://items/data/axe.tres" id="2_6wgnb"]
 [ext_resource type="ArrayMesh" uid="uid://dx78ofexiigtw" path="res://items/models/axe.res" id="3_6wgnb"]
 

@@ -13,15 +13,17 @@ config_version=5
 config/name="survival game"
 run/main_scene="uid://ckqkrttd08sb8"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0.027451, 0.0980392, 0.137255, 1)
+boot_splash/image="uid://hjsfcl1sgd71"
 config/icon="res://icon.svg"
 
 [autoload]
 
-DEBUG="*res://debug_ui.tscn"
-SignalBus="*res://SignalBus.gd"
-PrefabStorage="*res://PrefabStorage.gd"
-DebugCommands="*res://DebugCommands.gd"
-ItemStorage="*res://ItemStorage.gd"
+DEBUG="*res://global/debug_ui.tscn"
+SignalBus="*res://global/SignalBus.gd"
+PrefabStorage="*res://global/PrefabStorage.gd"
+DebugCommands="*res://global/DebugCommands.gd"
+ItemStorage="*res://global/ItemStorage.gd"
 
 [global_group]
 

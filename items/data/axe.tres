@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://ctup7e5d8yo5d" path="res://items/icons/axe_icon.png" id="1_2csh8"]
 [ext_resource type="ArrayMesh" uid="uid://dx78ofexiigtw" path="res://items/models/axe.res" id="2_5djq8"]
-[ext_resource type="Script" uid="uid://cfg6mehh0rgvi" path="res://items/data/ItemData.gd" id="3_am8km"]
+[ext_resource type="Script" uid="uid://cfg6mehh0rgvi" path="res://items/scripts/ItemData.gd" id="3_2csh8"]
 
 [resource]
-script = ExtResource("3_am8km")
+script = ExtResource("3_2csh8")
 name = "Axe"
 id = 0
 icon = ExtResource("1_2csh8")

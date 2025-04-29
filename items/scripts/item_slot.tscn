@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvtv06ack3mol"]
 
-[ext_resource type="Script" uid="uid://ci33g18ms3rro" path="res://item_slot.gd" id="1_n6cxc"]
+[ext_resource type="Script" uid="uid://ci33g18ms3rro" path="res://items/scripts/item_slot.gd" id="1_n6cxc"]
 
 [node name="ItemSlot" type="TextureButton" groups=["ItemSlots"]]
 anchors_preset = -1

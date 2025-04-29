@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ca5l8dpnhnte8"]
 
-[ext_resource type="Script" uid="uid://dx7xj1wpom46m" path="res://items/Item.gd" id="1_bjxk2"]
+[ext_resource type="Script" uid="uid://dx7xj1wpom46m" path="res://items/scripts/Item.gd" id="1_bjxk2"]
 [ext_resource type="Resource" uid="uid://drednf053cb8a" path="res://items/data/dagger.tres" id="2_2ogyj"]
 [ext_resource type="ArrayMesh" uid="uid://j0vdyvy013x7" path="res://items/models/dagger.res" id="3_ckcmk"]
 

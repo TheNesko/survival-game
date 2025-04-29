@@ -4,6 +4,7 @@ extends Node
 	"Inventory",
 	"DebugCommands",
 	"ItemStorage",
+	"Player"
 ]
 var nodes = []
 
@@ -29,6 +30,12 @@ func _get_command_names():
 		command_names.append(command.name)
 	return command_names
 
+func _get_command(command_name):
+	for command in commands:
+		if command.name == command_name:
+			return command
+	return null
+
 func show_commands():
 	for command in commands:
 		var args = command.args
@@ -37,9 +44,8 @@ func show_commands():
 			text += arg.class_name +" "
 		DEBUG.send_message(command.name+" "+text)
 
-func clear(i:Array):
+func clear():
 	DEBUG.message_box.text = ""
-	print(i)
 
 func _find_entity(entity_name:String):
 	var entity = get_tree().root.find_child(entity_name,true,false)
@@ -48,13 +54,15 @@ func _find_entity(entity_name:String):
 		return null
 	return entity
 
-func teleport(entity_name:String,position:Array):
+func teleport(entity_name:String,x:int,y:int,z:int):
 	var entity = _find_entity(entity_name) 
 	if not entity: return
-	entity.position.x = position[0]
-	entity.position.y = position[1]
-	entity.position.z = position[2]
-	DEBUG.send_message("Teleported "+entity_name+" to "+var_to_str(position))
+	entity.position.x = x
+	entity.position.y = y
+	entity.position.z = z
+	var text = "Teleported "+entity_name+ " to position "
+	text += "x:" + str(x) + " y:" + str(y) + " z:"  + str(z)
+	DEBUG.send_message(text)
 
 func position(entity_name:String):
 	var entity = _find_entity(entity_name)

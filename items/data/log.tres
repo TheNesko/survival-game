@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://d371dxote1ax7" path="res://items/icons/log_icon.png" id="1_3taaj"]
 [ext_resource type="ArrayMesh" uid="uid://ql057b5b5lge" path="res://items/models/log.res" id="1_31mol"]
-[ext_resource type="Script" uid="uid://cfg6mehh0rgvi" path="res://items/data/ItemData.gd" id="1_uw7er"]
+[ext_resource type="Script" uid="uid://cfg6mehh0rgvi" path="res://items/scripts/ItemData.gd" id="3_3taaj"]
 
 [resource]
-script = ExtResource("1_uw7er")
+script = ExtResource("3_3taaj")
 name = "Log"
 id = 2
 icon = ExtResource("1_3taaj")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkse3sjwtjrt6"]
 
 [ext_resource type="Theme" uid="uid://beqjtku706na3" path="res://Theme/debug_console.tres" id="1_a7nfk"]
-[ext_resource type="Script" uid="uid://duauo1s6hoh2v" path="res://debug.gd" id="1_k61it"]
+[ext_resource type="Script" uid="uid://duauo1s6hoh2v" path="res://global/debug.gd" id="1_k61it"]
 
 [node name="DebugUI" type="Control"]
 texture_filter = 6
@@ -55,6 +55,7 @@ keep_editing_on_text_submit = true
 emoji_menu_enabled = false
 
 [node name="popup" type="RichTextLabel" parent="ConsolePanel/Container/ConsoleInput"]
+visible = false
 layout_mode = 0
 offset_left = 1.0
 offset_top = 26.0
