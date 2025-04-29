@@ -69,3 +69,26 @@ func position(entity_name:String):
 	if not entity: return
 	
 	DEBUG.send_message(var_to_str(entity.position))
+
+func kill(entity_name:String):
+	var entity = _find_entity(entity_name)
+	if not entity: return
+	entity.get_parent().remove_child(entity)
+	entity.queue_free()
+	DEBUG.send_message("Killed entity " + entity.name)
+
+func looking_at():
+	var camera = get_tree().root.find_child("Camera3D",true,false)
+	if not camera: return
+	var raycast = RayCast3D.new()
+	raycast.target_position.z = -1000
+	for i in range(20):
+		raycast.set_collision_mask_value(i, true)
+	camera.add_child(raycast)
+	await get_tree().create_timer(0.1).timeout
+	var entity = raycast.get_collider()
+	raycast.queue_free()
+	if entity == null: 
+		DEBUG.send_message("Can't find entity",DEBUG.Message.WARNING)
+		return
+	DEBUG.send_message("Looking at " + entity.name)
