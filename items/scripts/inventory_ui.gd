@@ -27,7 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if is_opened: close()
 		else: open()
 	if Input.is_action_just_pressed("rotate"):
-		drag_data.item.rotate()
+		drag_data.item.rotated = not drag_data.item.rotated
 		_can_drop_data(get_viewport().get_mouse_position(),drag_data)
 	if Input.is_action_just_pressed("primary"):
 		pass
@@ -79,7 +79,10 @@ func _set_drag_preview():
 	preview_texture.texture = drag_data.item.icon
 	preview_texture.expand_mode = 1
 	preview_texture.size = Vector2i(drag_data.item.rows,drag_data.item.columns) * inventory.cell_size
-	preview_texture.position = -drag_data.offset
+	preview_texture.pivot_offset = preview_texture.size / Vector2(2,2)
+	if drag_data.item.rotated: preview.rotation = deg_to_rad(90)
+	else: preview.rotation = deg_to_rad(0)
+	preview_texture.position -= drag_data.offset
 	preview_texture.modulate.a = 0.5
 	if not can_drop:
 		preview_texture.modulate.r = 0.5

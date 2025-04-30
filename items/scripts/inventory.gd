@@ -44,11 +44,13 @@ func add_item(item:Item):
 func add_item_to_pos(item:Item,grid_pos:Vector2):
 	item = item.duplicate()
 	if not _can_add_item(item,grid_pos):
-		item.rotate()
+		item.rotated = not item.rotated
 	if not _can_add_item(item,grid_pos):
 		return false
-	for col in item.columns:
-		for row in item.rows:
+	var columns = item.rows if item.rotated else item.columns
+	var rows = item.columns if item.rotated else item.rows
+	for col in columns:
+		for row in rows:
 			var x : int = grid_pos.x+row
 			var y : int = grid_pos.y+col
 			grid[x][y] = item
@@ -61,8 +63,10 @@ func remove_item_from_pos(grid_pos:Vector2):
 		return false
 	var item = grid[grid_pos.x][grid_pos.y] as Item
 	if not item: return
-	for col in item.columns:
-		for row in item.rows:
+	var columns = item.rows if item.rotated else item.columns
+	var rows = item.columns if item.rotated else item.rows
+	for col in columns:
+		for row in rows:
 			var x : int = grid_pos.x+row
 			var y : int = grid_pos.y+col
 			grid[x][y] = null
@@ -75,8 +79,10 @@ func _drop_item(item:Item):
 	ItemStorage.spawn_item(item.id,item.quantity,pos.x,pos.y,pos.z)
 
 func _can_add_item(item:Item,grid_pos:Vector2) -> bool:
-	for col in item.columns:
-		for row in item.rows:
+	var columns = item.rows if item.rotated else item.columns
+	var rows = item.columns if item.rotated else item.rows
+	for col in columns:
+		for row in rows:
 			var pos = grid_pos+Vector2(row,col)
 			if not _is_in_grid(pos):
 				return false

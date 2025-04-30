@@ -17,9 +17,3 @@ extends Resource
 @export var quantity : int = 1
 @export_category("Stat Bonus")
 @export var stat_bonus : Dictionary = {}
-
-func rotate():
-	var temp = columns
-	columns = rows
-	rows = temp
-	rotated = not rotated
