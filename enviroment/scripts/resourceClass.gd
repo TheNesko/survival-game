@@ -2,7 +2,7 @@ extends StaticBody3D
 class_name ResourceClass
 
 @export var stats : StatisticsComponent
-@export var resource_drop : ItemData
+@export var resource_drop : Item
 @export var resource_quantity : int
 
 func drop_resources():

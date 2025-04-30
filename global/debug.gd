@@ -57,11 +57,11 @@ func display_if_debuging():
 	else: send_message("Stopped debuging",Message.ERROR)
 
 func convert_arg(arg,target_type):
-	var item_data_type : int = typeof(ItemData)
+	var item_type : int = typeof(Item)
 	match target_type:
 		TYPE_STRING:
 			return arg
-		item_data_type:
+		item_type:
 			return ItemStorage._get_item(int(arg))
 		_:
 			return str_to_var(arg)
@@ -200,9 +200,9 @@ func _insert_suggested_command():
 
 func _suggest_command_argument_values(type:int):
 	# TODO suggest command arguments
-	var item_data_type = typeof(ItemData)
+	var item_type = typeof(Item)
 	match type:
-		item_data_type:
+		item_type:
 			pass
 		_:
 			return null

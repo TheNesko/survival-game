@@ -1,10 +1,10 @@
 extends RigidBody3D
-class_name Item
+class_name PickUp
 
-@export var data : ItemData
+@export var data : Item
 
 func _ready() -> void:
 	name = data.name
 
-func pick_up() -> ItemData:
+func pick_up() -> Item:
 	return data

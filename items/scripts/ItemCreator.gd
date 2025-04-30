@@ -1,9 +1,9 @@
 @tool
-extends Node
 class_name ItemCreator
+extends Node
 
 @onready var folder = "res://items/"
-@export var data : ItemData
+@export var data : Item
 @export_tool_button("Start packing process") var start_packing_action = _start_packing
 @export_tool_button("Make item") var make_action = _make
 @export_tool_button("Save") var save_action = _save

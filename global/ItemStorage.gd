@@ -33,7 +33,6 @@ func _load_scenes():
 				if ".remap" in file_name[1]:
 					file = file.replace(".remap","")
 				item_files.append(file)
-				DEBUG.send_message(str(file_name))
 	for item in range(len(item_files)):
 		var new_item = load(items_folder+"/scenes/"+item_files[item])
 		items[item]["scene"] = new_item
@@ -45,12 +44,6 @@ func _item_exist(item_id):
 		return false
 	return true
 
-func _get_item_data(item_id) -> ItemData:
-	if not _item_exist(item_id): return null
-	var item_data = items[item_id].data
-	if item_data == null: DEBUG.send_message("Item not found",DEBUG.Message.WARNING)
-	return item_data
-
 func _get_item(item_id):
 	if not _item_exist(item_id): return null
 	var item = items[item_id]
@@ -60,6 +53,7 @@ func _get_item(item_id):
 func spawn_item(item_id:int,quantity:int,x:int,y:int,z:int):
 	if quantity <= 0:
 		DEBUG.send_message("Quantity can't be less than 1",DEBUG.Message.WARNING)
+		return
 	var item = _get_item(item_id)
 	var world = get_tree().root
 	for q in range(quantity):

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://drednf053cb8a"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://drednf053cb8a"]
 
 [ext_resource type="Texture2D" uid="uid://bync2tplhseot" path="res://items/icons/dagger_icon.png" id="1_cl81h"]
 [ext_resource type="ArrayMesh" uid="uid://j0vdyvy013x7" path="res://items/models/dagger.res" id="2_cl81h"]
@@ -10,14 +10,13 @@ name = "Dagger"
 id = 1
 icon = ExtResource("1_cl81h")
 mesh = ExtResource("2_cl81h")
-width = 1
-height = 2
-is_equippable = true
-equipment_slot = 4
+columns = 1
+rows = 1
+origin = Vector2(0, 0)
+rotated = false
 is_stackable = false
 max_stack = 1
 quantity = 1
-use = 1
 stat_bonus = {
 "damage": 5
 }

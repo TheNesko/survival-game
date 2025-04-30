@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc8mfluu54yop"]
+[gd_scene load_steps=18 format=3 uid="uid://bc8mfluu54yop"]
 
 [ext_resource type="Script" uid="uid://c2fnikb5b3xc" path="res://characters/scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://cl6a5g7rvrnq3" path="res://components/hurtbox.tscn" id="2_onrkg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://crr0ejn5u5mnk" path="res://items/scripts/inventory.gd" id="7_j31ep"]
 [ext_resource type="Script" uid="uid://cbekpf2ko2b1u" path="res://items/scripts/equipment.gd" id="7_q605b"]
 [ext_resource type="Script" uid="uid://dbv0kjw2eq5vg" path="res://items/scripts/inventory_ui.gd" id="8_n8jd0"]
+[ext_resource type="PackedScene" uid="uid://dvtv06ack3mol" path="res://items/scripts/item_slot.tscn" id="10_q605b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 radius = 0.610764
@@ -27,6 +28,13 @@ roughness = 0.15
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sweqy"]
 radius = 0.879101
 height = 2.28981
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q605b"]
+bg_color = Color(0.0605303, 0.0605303, 0.0605303, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER")]
 collision_layer = 2
@@ -74,7 +82,10 @@ disabled = true
 script = ExtResource("5_sweqy")
 
 [node name="Inventory" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("7_j31ep")
+columns = 8
+rows = 8
 
 [node name="Equipment" type="Node" parent="."]
 script = ExtResource("7_q605b")
@@ -96,6 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("6_2hs0m")
+metadata/_edit_lock_ = true
 
 [node name="cursor" type="ColorRect" parent="UI"]
 layout_mode = 1
@@ -134,7 +146,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("8_n8jd0")
+item_slot = ExtResource("10_q605b")
+
+[node name="InventoryPanel" type="PanelContainer" parent="InventoryUI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -48.5
+offset_bottom = 48.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_q605b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryUI/InventoryPanel"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryUI/InventoryPanel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="InventoryUI/InventoryPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="InventoryUI/InventoryPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="InventoryGrid" type="GridContainer" parent="InventoryUI/InventoryPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[connection signal="pressed" from="InventoryUI/InventoryPanel/VBoxContainer/HBoxContainer/CloseButton" to="InventoryUI" method="_on_close_button_pressed"]
