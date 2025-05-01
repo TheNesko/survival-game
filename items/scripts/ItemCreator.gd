@@ -57,4 +57,4 @@ func _save():
 	for child in node_to_save.get_children():
 		child.set_owner(node_to_save)
 	scene.pack(node_to_save)
-	ResourceSaver.save(scene, folder+data.name+".tscn")
+	ResourceSaver.save(scene, folder+"/scenes/"+data.name+".tscn")

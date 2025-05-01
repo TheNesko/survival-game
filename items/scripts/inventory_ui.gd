@@ -27,6 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if is_opened: close()
 		else: open()
 	if Input.is_action_just_pressed("rotate"):
+		if not drag_data: return
 		drag_data.item.rotated = not drag_data.item.rotated
 		_can_drop_data(get_viewport().get_mouse_position(),drag_data)
 	if Input.is_action_just_pressed("primary"):
@@ -79,9 +80,9 @@ func _set_drag_preview():
 	preview_texture.texture = drag_data.item.icon
 	preview_texture.expand_mode = 1
 	preview_texture.size = Vector2i(drag_data.item.rows,drag_data.item.columns) * inventory.cell_size
-	preview_texture.pivot_offset = preview_texture.size / Vector2(2,2)
-	if drag_data.item.rotated: preview.rotation = deg_to_rad(90)
-	else: preview.rotation = deg_to_rad(0)
+	if drag_data.item.rotated:
+		preview_texture.rotation = deg_to_rad(90)
+		preview_texture.position.x = preview_texture.size.y
 	preview_texture.position -= drag_data.offset
 	preview_texture.modulate.a = 0.5
 	if not can_drop:
@@ -102,12 +103,12 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	return drag_data
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	_set_drag_preview()
 	if not data: return false
 	var grid_pos = at_position - inventory_grid.global_position
 	grid_pos = inventory.get_grid_position(grid_pos)
 	var offset = inventory.get_grid_position(data.offset)
 	can_drop = inventory._can_add_item(data.item,grid_pos-offset)
+	_set_drag_preview()
 	return can_drop
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:

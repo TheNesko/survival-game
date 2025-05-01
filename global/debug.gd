@@ -190,22 +190,22 @@ func _insert_suggested_command():
 	var command = suggested_commands[current_suggested].command
 	if currently_editing == 0:
 		text = text.replace(formated_text[0],command.name+" ")
-	elif currently_editing > 0:
+	#elif currently_editing > 0:
 		# TODO
 		# DO I EVEN WANT TO DO THAT?
-		if currently_editing <= len(command.args):
-			var arg = command.args[currently_editing-1]
-			var arguments = _suggest_command_argument_values(arg.type)
+		#if currently_editing <= len(command.args):
+			#var arg = command.args[currently_editing-1]
+			#var arguments = _suggest_command_argument_values(arg.type)
 	_set_console_text(text)
 
-func _suggest_command_argument_values(type:int):
+#func _suggest_command_argument_values(type:int):
 	# TODO suggest command arguments
-	var item_type = typeof(Item)
-	match type:
-		item_type:
-			pass
-		_:
-			return null
+	#var item_type = typeof(Item)
+	#match type:
+		#item_type:
+			#pass
+		#_:
+			#return null
 
 func _text_changed(_text):
 	current_suggested = 0
