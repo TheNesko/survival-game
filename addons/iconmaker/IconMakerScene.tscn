@@ -1,0 +1,272 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnxqqcsn3v5vb"]
+
+[ext_resource type="Script" uid="uid://bnx5wovr70ito" path="res://addons/iconmaker/icon_maker_scene.gd" id="1_25jt4"]
+[ext_resource type="ArrayMesh" uid="uid://dx78ofexiigtw" path="res://items/models/axe.res" id="2_yrgpx"]
+[ext_resource type="Shader" uid="uid://by4ojxos3cfuf" path="res://addons/iconmaker/remove_color.gdshader" id="3_yrgpx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8mm7a"]
+sky_top_color = Color(0.358701, 0.425411, 0.518216, 1)
+sky_curve = 1e-05
+ground_bottom_color = Color(0.0667738, 0.0692853, 0.0155293, 1)
+ground_horizon_color = Color(0.356863, 0.423529, 0.517647, 1)
+ground_curve = 0.218567
+sun_curve = 0.0609189
+energy_multiplier = 5.0
+
+[sub_resource type="Sky" id="Sky_hq1ik"]
+sky_material = SubResource("ProceduralSkyMaterial_8mm7a")
+process_mode = 3
+
+[sub_resource type="Environment" id="Environment_o1xup"]
+background_mode = 1
+background_color = Color(0, 1, 0, 1)
+sky = SubResource("Sky_hq1ik")
+ambient_light_source = 3
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_read_sky_light = false
+fog_mode = 1
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_saturation = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1xup"]
+shader = ExtResource("3_yrgpx")
+shader_parameter/color1 = Color(0, 1, 0, 1)
+shader_parameter/color2 = Vector4(0, 0, 0, 1)
+shader_parameter/color3 = Vector4(0, 0, 0, 1)
+shader_parameter/precision = 0.1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yrgpx"]
+viewport_path = NodePath("Node3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1xup"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="Icon Maker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_25jt4")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="SubViewport" type="SubViewport" parent="Node3D"]
+unique_name_in_owner = true
+size = Vector2i(64, 64)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/SubViewport"]
+environment = SubResource("Environment_o1xup")
+current = true
+fov = 30.0
+size = 1.8
+
+[node name="Mesh" type="MeshInstance3D" parent="Node3D/SubViewport/Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_yrgpx")
+skeleton = NodePath("")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="Icon Folder" type="Button" parent="VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "Select Icon Folder"
+
+[node name="IconFolderSelect" type="FileDialog" parent="VBoxContainer2/HBoxContainer3/Icon Folder"]
+unique_name_in_owner = true
+title = "Open a Directory"
+initial_position = 1
+size = Vector2i(500, 400)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+
+[node name="ItemFolder" type="Button" parent="VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "Select Item"
+
+[node name="ItemSelect" type="FileDialog" parent="VBoxContainer2/HBoxContainer3/ItemFolder"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+title = "Open a File"
+initial_position = 1
+size = Vector2i(500, 400)
+ok_button_text = "Open"
+file_mode = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="IconParameters" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/IconParameters"]
+layout_mode = 2
+text = "Icon parameters"
+
+[node name="CellSizeEdit" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/IconParameters"]
+layout_mode = 2
+min_value = 32.0
+max_value = 320.0
+value = 64.0
+alignment = 3
+suffix = "X"
+custom_arrow_step = 32.0
+
+[node name="WidthEdit" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/IconParameters"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+alignment = 3
+suffix = "X"
+custom_arrow_step = 1.0
+
+[node name="HeightEdit" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/IconParameters"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+alignment = 3
+suffix = "Y"
+custom_arrow_step = 1.0
+
+[node name="ScaleEdit" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/IconParameters"]
+layout_mode = 2
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+alignment = 3
+suffix = "Scale"
+custom_arrow_step = 1.0
+
+[node name="create" type="Button" parent="VBoxContainer2/HBoxContainer2/IconParameters"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create"
+
+[node name="Position" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/Position"]
+layout_mode = 2
+text = "Mesh Position"
+
+[node name="X_pos" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/Position"]
+layout_mode = 2
+min_value = -32.0
+max_value = 32.0
+step = 0.01
+alignment = 3
+suffix = "X"
+custom_arrow_step = 0.1
+
+[node name="Y_pos" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/Position"]
+layout_mode = 2
+min_value = -32.0
+max_value = 32.0
+step = 0.01
+alignment = 3
+suffix = "Y"
+custom_arrow_step = 0.1
+
+[node name="Z_pos" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/Position"]
+layout_mode = 2
+min_value = -32.0
+max_value = 32.0
+step = 0.01
+alignment = 3
+suffix = "Z"
+custom_arrow_step = 0.1
+
+[node name="rotation" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer2/rotation"]
+layout_mode = 2
+text = "Mesh Rotation"
+
+[node name="X_rot" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/rotation"]
+layout_mode = 2
+min_value = -5.0
+max_value = 5.0
+step = 0.01
+alignment = 3
+suffix = "X"
+custom_arrow_step = 0.05
+
+[node name="Y_rot" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/rotation"]
+layout_mode = 2
+min_value = -5.0
+max_value = 5.0
+step = 0.01
+alignment = 3
+suffix = "Y"
+custom_arrow_step = 0.05
+
+[node name="Z_rot" type="SpinBox" parent="VBoxContainer2/HBoxContainer2/rotation"]
+layout_mode = 2
+min_value = -5.0
+max_value = 5.0
+step = 0.01
+alignment = 3
+suffix = "Z"
+custom_arrow_step = 0.05
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_o1xup")
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("ViewportTexture_yrgpx")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o1xup")
+
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/Icon Folder" to="." method="_on_icon_folder_pressed"]
+[connection signal="dir_selected" from="VBoxContainer2/HBoxContainer3/Icon Folder/IconFolderSelect" to="." method="_on_icon_folder_select_dir_selected"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer3/ItemFolder" to="." method="_on_item_folder_pressed"]
+[connection signal="file_selected" from="VBoxContainer2/HBoxContainer3/ItemFolder/ItemSelect" to="." method="_on_item_select_file_selected"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/IconParameters/CellSizeEdit" to="." method="_on_cell_size_edit_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/IconParameters/WidthEdit" to="." method="_on_width_edit_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/IconParameters/HeightEdit" to="." method="_on_height_edit_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/IconParameters/ScaleEdit" to="." method="_on_scale_edit_value_changed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer2/IconParameters/create" to="." method="_on_create_pressed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/Position/X_pos" to="." method="_on_x_pos_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/Position/Y_pos" to="." method="_on_y_pos_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/Position/Z_pos" to="." method="_on_z_pos_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/rotation/X_rot" to="." method="_on_x_rot_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/rotation/Y_rot" to="." method="_on_y_rot_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/HBoxContainer2/rotation/Z_rot" to="." method="_on_z_rot_value_changed"]

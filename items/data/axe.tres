@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bcau71rmcfvxu"]
 
-[ext_resource type="Texture2D" uid="uid://ctup7e5d8yo5d" path="res://items/icons/axe_icon.png" id="1_2csh8"]
+[ext_resource type="Texture2D" uid="uid://cnvl6i1amia1" path="res://items/icons/Axe.png" id="1_2csh8"]
 [ext_resource type="ArrayMesh" uid="uid://dx78ofexiigtw" path="res://items/models/axe.res" id="2_5djq8"]
 [ext_resource type="Script" uid="uid://cfg6mehh0rgvi" path="res://items/scripts/ItemData.gd" id="3_2csh8"]
 
@@ -11,7 +11,7 @@ id = 0
 icon = ExtResource("1_2csh8")
 mesh = ExtResource("2_5djq8")
 columns = 2
-rows = 2
+rows = 1
 origin = Vector2(0, 0)
 rotated = false
 is_stackable = false

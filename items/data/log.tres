@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bmky64yfusivs"]
 
-[ext_resource type="Texture2D" uid="uid://d371dxote1ax7" path="res://items/icons/log_icon.png" id="1_3taaj"]
+[ext_resource type="Texture2D" uid="uid://dga37qgnq1q6a" path="res://items/icons/Log.png" id="1_3taaj"]
 [ext_resource type="ArrayMesh" uid="uid://ql057b5b5lge" path="res://items/models/log.res" id="1_31mol"]
 [ext_resource type="Script" uid="uid://cfg6mehh0rgvi" path="res://items/scripts/ItemData.gd" id="3_3taaj"]
 
@@ -11,7 +11,9 @@ id = 2
 icon = ExtResource("1_3taaj")
 mesh = ExtResource("1_31mol")
 columns = 1
-rows = 2
+rows = 3
+origin = Vector2(0, 0)
+rotated = false
 is_stackable = true
 max_stack = 3
 quantity = 1

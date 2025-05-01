@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckqkrttd08sb8"]
+[gd_scene load_steps=14 format=3 uid="uid://ckqkrttd08sb8"]
 
 [ext_resource type="PackedScene" uid="uid://bc8mfluu54yop" path="res://characters/player.tscn" id="1_0f027"]
+[ext_resource type="Environment" uid="uid://474fuucwvhuj" path="res://enviroment/main_scene_environment.tres" id="1_c1pb6"]
 [ext_resource type="PackedScene" uid="uid://qva270eo70bv" path="res://enviroment/box.tscn" id="2_2c62f"]
 [ext_resource type="PackedScene" uid="uid://d2f1354ef5vpc" path="res://characters/enemy.tscn" id="4_d5x1h"]
 [ext_resource type="PackedScene" uid="uid://25n150rq44ju" path="res://enviroment/tree.tscn" id="5_8mm7a"]
@@ -8,32 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://boop5v0nj3dx6" path="res://enviroment/stairs.tscn" id="6_hq1ik"]
 [ext_resource type="PackedScene" uid="uid://ca5l8dpnhnte8" path="res://items/scenes/Dagger.tscn" id="7_7ycvg"]
 [ext_resource type="PackedScene" uid="uid://badl1ihqm06lc" path="res://items/scenes/Log.tscn" id="8_wr18j"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8mm7a"]
-sky_top_color = Color(0.358701, 0.425411, 0.518216, 1)
-sky_curve = 1e-05
-ground_bottom_color = Color(0.0667738, 0.0692853, 0.0155293, 1)
-ground_horizon_color = Color(0.356863, 0.423529, 0.517647, 1)
-ground_curve = 0.218567
-sun_curve = 0.0609189
-
-[sub_resource type="Sky" id="Sky_hq1ik"]
-sky_material = SubResource("ProceduralSkyMaterial_8mm7a")
-process_mode = 3
-
-[sub_resource type="Environment" id="Environment_nfk4m"]
-background_mode = 2
-sky = SubResource("Sky_hq1ik")
-tonemap_mode = 3
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-glow_enabled = true
-fog_mode = 1
-fog_density = 1.0
-adjustment_enabled = true
-adjustment_saturation = 1.5
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o3jxj"]
 
@@ -50,7 +25,7 @@ orientation = 1
 [node name="MainScene" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_nfk4m")
+environment = ExtResource("1_c1pb6")
 
 [node name="floor" type="StaticBody3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)

@@ -1,0 +1,21 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://474fuucwvhuj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3au2g"]
+
+[sub_resource type="Sky" id="Sky_dogmd"]
+sky_material = SubResource("ProceduralSkyMaterial_3au2g")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_dogmd")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+fog_mode = 1
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_saturation = 1.5
