@@ -83,9 +83,8 @@ script = ExtResource("5_sweqy")
 [node name="Inventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_j31ep")
-
-[node name="Inventory2" type="Node" parent="."]
-script = ExtResource("7_j31ep")
+cell_size = 32
+columns = 8
 
 [node name="Equipment" type="Node" parent="."]
 script = ExtResource("7_q605b")

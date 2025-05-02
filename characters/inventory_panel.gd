@@ -73,7 +73,7 @@ func open(_inventory:Inventory):
 		for row in inventory.rows:
 			var slot = item_slot.instantiate()
 			inventory_grid.add_child(slot)
-			slot.item = inventory.grid[column][row]
+			slot.item = inventory.grid[row][column]
 	is_opened = true
 	visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -98,9 +98,9 @@ func _set_drag_preview():
 	if not drag_data: return
 	preview_texture.texture = drag_data.item.icon
 	preview_texture.expand_mode = 1
-	preview_texture.size = drag_data.item.get_dimensions(64)
+	preview_texture.size = drag_data.item.get_dimensions(inventory.cell_size)
 	preview.rotation_degrees = drag_data.item.rotation
-	preview_texture.position -= Vector2(32,32)
+	preview_texture.position -= Vector2(inventory.cell_size/2,inventory.cell_size/2)
 	preview_texture.modulate.a = 0.5
 	if not can_drop:
 		preview_texture.modulate.r = 0.5
@@ -111,6 +111,7 @@ func _set_drag_preview():
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var grid_pos = at_position - inventory_grid.position
+	if grid_pos.x < 0 or grid_pos.y < 0: return
 	grid_pos = inventory.get_grid_position(grid_pos)
 	if not inventory._is_in_grid(grid_pos): return
 	var drag_item = inventory.grid[grid_pos.x][grid_pos.y] as Item

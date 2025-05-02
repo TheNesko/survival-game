@@ -4,20 +4,21 @@ extends Node
 signal item_added
 signal item_removed
 
-var cell_size : Vector2i = Vector2i(64, 64)
 var grid = []
 
+@export_range(16,128,16) var cell_size : int = 64
 @export_range(1,8) var columns : int = 5
 @export_range(1,16) var rows : int = 5
 
 func _ready():
+	set_up()
+
+func set_up():
 	grid.resize(rows)
 	for x in range(rows):
 		grid[x] = []
 		for y in range(columns):
 			grid[x].append(null)
-
-
 
 func get_grid_position(local_position:Vector2) -> Vector2i:
 	var pos : Vector2i = local_position
