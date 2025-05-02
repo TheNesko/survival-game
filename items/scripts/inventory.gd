@@ -36,6 +36,13 @@ func add_item(item:Item):
 				item.rotate_clockwise()
 	return false
 
+func remove_item(item:Item):
+	for col in columns:
+		for row in rows:
+			if grid[row][col] == item:
+				remove_item_from_pos(Vector2i(row,col))
+			
+
 func remove_item_from_pos(grid_pos:Vector2i):
 	if not _is_in_grid(grid_pos):
 		return false
@@ -84,6 +91,7 @@ func _is_in_grid(grid_pos:Vector2i) -> bool:
 	return true
 
 func is_occupied(grid_pos:Vector2i) -> bool:
+	if not _is_in_grid(grid_pos): return true
 	if grid[grid_pos.x][grid_pos.y]:
 		return true
 	return false
