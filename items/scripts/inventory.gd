@@ -17,17 +17,7 @@ func _ready():
 		for y in range(columns):
 			grid[x].append(null)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("hotbar_1"):
-		var item: Item = ItemStorage._get_item(1).data
-		add_item(item)
-	if Input.is_action_just_pressed("hotbar_2"):
-		var item: Item = ItemStorage._get_item(2).data
-		add_item(item)
-	if Input.is_action_just_pressed("hotbar_3"):
-		var item: Item = ItemStorage._get_item(0).data
-		add_item(item)
-		
+
 
 func get_grid_position(local_position:Vector2) -> Vector2i:
 	var pos : Vector2i = local_position
