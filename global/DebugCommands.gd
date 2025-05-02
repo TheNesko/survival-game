@@ -47,11 +47,19 @@ func clear():
 	DEBUG.message_box.text = ""
 
 func _find_entity(entity_name:String):
-	var entity = get_tree().root.find_child(entity_name,true,false)
+	var entity
+	for node in get_tree().get_nodes_in_group("Entity"):
+		if node.name == entity_name:
+			entity = node
+			break
+	#var entity = get_tree().root.find_child(entity_name,true,false)
 	if not entity:
 		DEBUG.send_message("Entity " + entity_name + " not found",DEBUG.Message.WARNING)
 		return null
 	return entity
+
+func _get_entities(group_name:String):
+	return get_tree().get_nodes_in_group(group_name)
 
 func teleport(entity_name:String,x:int,y:int,z:int):
 	var entity = _find_entity(entity_name) 
@@ -70,11 +78,24 @@ func position(entity_name:String):
 	DEBUG.send_message(var_to_str(entity.position))
 
 func kill(entity_name:String):
-	var entity = _find_entity(entity_name)
-	if not entity: return
-	entity.get_parent().remove_child(entity)
-	entity.queue_free()
-	DEBUG.send_message("Killed entity " + entity.name)
+	var entity = null
+	if len(entity_name) == 2:
+		if entity_name[0] == "@":
+			match entity_name[1]:
+				"e":
+					entity = _get_entities("Entity")
+					if entity == []: return
+					var ammount = 0
+					for node in entity:
+						node.queue_free()
+						ammount += 1
+					DEBUG.send_message("Killed "+ str(ammount) +" Entities ",DEBUG.Message.WARNING)
+	else:
+		entity = _find_entity(entity_name)
+		if not entity: return
+		entity.get_parent().remove_child(entity)
+		entity.queue_free()
+		DEBUG.send_message("Killed entity " + entity.name)
 
 func looking_at():
 	var camera = get_tree().root.find_child("Camera3D",true,false)

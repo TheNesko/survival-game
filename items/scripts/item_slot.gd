@@ -10,18 +10,9 @@ func _ready() -> void:
 
 func display():
 	texture_rect.texture = null
+	texture_rect.rotation_degrees = 0
 	if not item: return
 	texture_rect.texture = item.icon
-	texture_rect.size.x = item.rows*64
-	texture_rect.size.y = item.columns*64
-	if item.rotated:
-		texture_rect.rotation = deg_to_rad(90)
-		texture_rect.position.x = texture_rect.size.y
-	else:
-		texture_rect.rotation = deg_to_rad(0)
-		texture_rect.position.x = 0
-
-#func _draw():
-	#if not item: return
-	#var rect = Rect2(0, 0,item.rows*64,item.columns*64)
-	#draw_texture_rect(item.icon,rect,false)
+	texture_rect.size = item.get_dimensions(64)
+	texture_rect.rotation_degrees = item.rotation
+	texture_rect.pivot_offset = Vector2i(32,32)

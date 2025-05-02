@@ -31,6 +31,10 @@ ItemStorage="*res://global/ItemStorage.gd"
 gdscript/warnings/unused_parameter=0
 gdscript/warnings/unused_signal=0
 
+[editor]
+
+movie_writer/movie_file="E:/Develop/Recording/Recoding.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/iconmaker/plugin.cfg")

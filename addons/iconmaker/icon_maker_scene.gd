@@ -23,7 +23,14 @@ func _physics_process(delta: float) -> void:
 	texture_rect.texture = viewport.get_texture()
 	mesh.position = mesh_pos
 	mesh.rotation = mesh_rotation
-	
+	queue_redraw()
+
+func _draw() -> void:
+	if not current_item: return
+	for cell in current_item.shape:
+		var offset = texture_rect.position + texture_rect.get_parent().position
+		var rect = Rect2(cell.x*cell_size+offset.x,cell.y*cell_size+offset.y,cell_size,cell_size)
+		draw_rect(rect,Color(0,0,0),false,2)
 
 func _on_width_edit_value_changed(value: float) -> void:
 	width = value

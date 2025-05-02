@@ -1,5 +1,5 @@
-extends RigidBody3D
 class_name PickUp
+extends Entity
 
 @export var data : Item
 
