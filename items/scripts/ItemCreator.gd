@@ -2,32 +2,53 @@
 class_name ItemCreator
 extends Node
 
-@onready var folder = "res://items/"
-@export var data : Item
-@export_tool_button("Start packing process") var start_packing_action = _start_packing
+@export_dir var items_folder : String
+var item_paths = []
 @export_tool_button("Make item") var make_action = _make
-@export_tool_button("Save") var save_action = _save
-
-func _start_packing():
-	var item_data_list = []
-	var dir = DirAccess.open(folder+"/data")
-	if dir:
-		for file in dir.get_files():
-			var file_name = file.split(".",false,1)
-			if file_name[1] == "tres":
-				item_data_list.append(load(folder+"/data/"+file_name[0]+".tres"))
-	for item in item_data_list:
-		data = item
-		_make()
-		_save()
 
 func _make():
+	var dir = DirAccess.open(items_folder)
+	if not dir: return
+	_get_files_in_folder(dir.get_current_dir())
+	for path in item_paths:
+		var item_dir = DirAccess.open(path)
+		for file in item_dir.get_files():
+			if file.ends_with(".tres"):
+				_pack(load(path+"/"+file),path)
+	EditorInterface.get_resource_filesystem().scan()
+
+func _get_files_in_folder(folder):
+	var dir = DirAccess.open(folder)
+	if not dir: return
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			_get_files_in_folder(dir.get_current_dir()+"/"+file_name)
+		else:
+			if file_name.ends_with(".tres"):
+				item_paths.append(dir.get_current_dir())
+		file_name = dir.get_next()
+
+func has_scene(folder):
+	var dir = DirAccess.open(folder)
+	if not dir: return
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if file_name.ends_with(".tscn"):
+			return true
+		file_name = dir.get_next()
+	return false
+
+func _pack(data:Item,folder):
 	if not data: return
+	if has_scene(folder): return
 	for child in get_children():
 		remove_child(child)
 	var child = RigidBody3D.new()
 	child.name = data.name
-	child.script = load("res://items/scripts/Item.gd")
+	child.script = load("res://items/Scripts/Item.gd")
 	_add_child(child,self)
 	child.data = data
 	child.set_collision_layer_value(1, false)
@@ -44,17 +65,20 @@ func _make():
 	mesh.create_convex_collision()
 	mesh.get_child(0).get_child(0).reparent(child)
 	mesh.get_child(0).queue_free()
+	_save(data,folder)
 
 func _add_child(child,parent):
 	add_child(child)
 	child.owner = self
 	child.reparent(parent)
 
-func _save():
+func _save(data:Item,folder):
 	var node_to_save = find_child(data.name)
 	if node_to_save == null: return
 	var scene = PackedScene.new()
 	for child in node_to_save.get_children():
 		child.set_owner(node_to_save)
 	scene.pack(node_to_save)
-	ResourceSaver.save(scene, folder+"/scenes/"+data.name+".tscn")
+	var dir = DirAccess.open(folder)
+	if not dir: return
+	ResourceSaver.save(scene, folder+"/"+data.name+".tscn")

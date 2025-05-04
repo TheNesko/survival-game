@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://btdt7qdnwb3fm"]
+
+[ext_resource type="Script" uid="uid://dx7xj1wpom46m" path="res://items/Scripts/Item.gd" id="1_tese4"]
+[ext_resource type="Resource" uid="uid://cjpitkhdegsb6" path="res://items/Equipment/Dagger/Dagger.tres" id="2_apwby"]
+[ext_resource type="ArrayMesh" uid="uid://j0vdyvy013x7" path="res://items/Equipment/Dagger/dagger.res" id="3_2ydrx"]
+[ext_resource type="Texture2D" uid="uid://6sfgbp7silqn" path="res://items/Equipment/Dagger/rogue_texture.png" id="4_apwby"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhrg4"]
+albedo_texture = ExtResource("4_apwby")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_stfpc"]
+points = PackedVector3Array(-0.120166, 0.236268, -1.48565e-05, -0.0849871, 0.236268, 0.0525361, -0.117653, 0.611974, -1.48565e-05, -0.0849871, 0.236268, -0.0525509, -0.0845556, 0.143139, -0.0536501, -0.119582, 0.143139, -1.48565e-05, -0.0845556, 0.143139, 0.0536352, -9.79751e-06, 0.236268, 0.074311, 0.0105235, 0.678191, 0.0423913, 0.0253209, 0.812043, 0.0350538, -0.0810783, 0.810981, -1.48565e-05, -0.11476, 0.678073, -1.48565e-05, -9.79751e-06, 0.143139, 0.0758706, 0.0253209, 0.812043, -0.0350686, 0.0105235, 0.678191, -0.0424061, -9.79751e-06, 0.236268, -0.0743259, -9.79751e-06, 0.143139, -0.0758706, -0.0600624, -0.206127, -0.0376085, -0.0849363, -0.206127, 0, -0.0600624, -0.206127, 0.0375937, 0.0849675, 0.236268, 0.0525361, 0.0510324, 0.916386, 0.0154623, -0.00846183, 0.91615, -1.48565e-05, -9.79751e-06, -0.206127, 0.0531748, 0.0600428, -0.206127, 0.0375937, 0.084536, 0.143139, 0.0536352, 0.0510324, 0.916386, -0.0154771, 0.0849675, 0.236268, -0.0525509, 0.084536, 0.143139, -0.0536501, 0.0600428, -0.206127, -0.0376085, -9.79751e-06, -0.206127, -0.0531896, -9.79751e-06, -0.224895, 0, 0.139132, 0.556733, -1.48565e-05, 0.0663628, 0.980833, -1.48565e-05, 0.0849167, -0.206127, 0, 0.119562, 0.143139, 0)
+
+[node name="Dagger" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 271
+script = ExtResource("1_tese4")
+data = ExtResource("2_apwby")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_2ydrx")
+surface_material_override/0 = SubResource("StandardMaterial3D_xhrg4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_stfpc")

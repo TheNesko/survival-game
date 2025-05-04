@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdop6kuy7pt2o"]
+
+[ext_resource type="Script" uid="uid://cj6uv3puxa8g4" path="res://Entities/inventory_grid.gd" id="1_wttat"]
+
+[node name="InventoryGridContainer" type="VBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Container name"
+
+[node name="InventoryGrid" type="GridContainer" parent="."]
+layout_mode = 2
+script = ExtResource("1_wttat")
+metadata/_custom_type_script = "uid://cj6uv3puxa8g4"

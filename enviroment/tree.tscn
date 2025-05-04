@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://25n150rq44ju"]
 
 [ext_resource type="Script" uid="uid://ccywbr4horjoo" path="res://enviroment/scripts/tree.gd" id="1_gvmkm"]
-[ext_resource type="PackedScene" uid="uid://cl6a5g7rvrnq3" path="res://components/hurtbox.tscn" id="2_gvmkm"]
-[ext_resource type="Script" uid="uid://o8qnhht2lmqa" path="res://components/scripts/StatsComponent.gd" id="2_hluxc"]
-[ext_resource type="Resource" uid="uid://bmky64yfusivs" path="res://items/data/log.tres" id="2_rg5g7"]
+[ext_resource type="PackedScene" uid="uid://cl6a5g7rvrnq3" path="res://Components/hurtbox.tscn" id="2_gvmkm"]
+[ext_resource type="Script" uid="uid://o8qnhht2lmqa" path="res://Components/scripts/StatsComponent.gd" id="2_hluxc"]
+[ext_resource type="Resource" uid="uid://dmt7pyxklsgmo" path="res://items/Resources/Log/Log.tres" id="2_rg5g7"]
 [ext_resource type="PackedScene" uid="uid://cl7r3stw6fv2" path="res://enviroment/models/oak_tree_1.tscn" id="4_d2g23"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uc1xx"]

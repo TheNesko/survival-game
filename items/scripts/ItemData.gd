@@ -20,9 +20,10 @@ var origin : Vector2 = Vector2.ZERO
 @export var is_stackable : bool = false
 @export var max_stack : int = 1
 @export var quantity : int = 1
-@export_category("Stat Bonus")
-@export var stat_bonus : Dictionary = {}
 
+
+func use():
+	DEBUG.send_message("Used "+name)
 
 
 func rotate_clockwise() -> Array[Vector2i]:

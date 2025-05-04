@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://jtd82qeko76n"]
+
+[ext_resource type="Script" uid="uid://bv4cudsj3823i" path="res://items/Scripts/ItemCreator.gd" id="1_4jicw"]
+[ext_resource type="Script" uid="uid://dx7xj1wpom46m" path="res://items/Scripts/Item.gd" id="3_4gwnh"]
+[ext_resource type="Resource" uid="uid://2oc0tbh14inr" path="res://items/Equipment/Backpack/Backpack.tres" id="3_6gaos"]
+
+[node name="ItemPrefab" type="Node"]
+script = ExtResource("1_4jicw")
+items_folder = "res://items"
+
+[node name="Backpack" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 271
+script = ExtResource("3_4gwnh")
+data = ExtResource("3_6gaos")
+
+[node name="mesh" type="MeshInstance3D" parent="Backpack"]

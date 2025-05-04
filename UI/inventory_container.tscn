@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmunscd7gqoo1"]
+
+[ext_resource type="Script" uid="uid://cp8dhl3lgkff0" path="res://UI/inventory_container.gd" id="1_l48pg"]
+
+[node name="InventoryContainer" type="PanelContainer"]
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("1_l48pg")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2

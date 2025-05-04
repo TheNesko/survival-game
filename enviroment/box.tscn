@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://17rm2ayx0mjk" path="res://enviroment/scripts/box.gd" id="1_32cpv"]
 [ext_resource type="ArrayMesh" uid="uid://b4vt33falglft" path="res://enviroment/models/box_small.obj" id="1_g2tbl"]
 [ext_resource type="Texture2D" uid="uid://b7ft0jpe16ukd" path="res://enviroment/textures/dungeon_texture.png" id="2_8qpam"]
-[ext_resource type="Script" uid="uid://crr0ejn5u5mnk" path="res://items/scripts/inventory.gd" id="4_7uvrd"]
+[ext_resource type="Script" uid="uid://crr0ejn5u5mnk" path="res://UI/inventory.gd" id="4_7uvrd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_juslf"]
 albedo_texture = ExtResource("2_8qpam")

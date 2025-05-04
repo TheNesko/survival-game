@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvtv06ack3mol"]
+
+[ext_resource type="Script" uid="uid://ci33g18ms3rro" path="res://UI/item_slot.gd" id="1_n6cxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78mqi"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="ItemSlot" type="Control" groups=["ItemSlots"]]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchor_right = 0.056
+anchor_bottom = 0.099
+offset_right = -0.512001
+offset_bottom = -0.152
+grow_horizontal = 2
+mouse_filter = 1
+script = ExtResource("1_n6cxc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_78mqi")

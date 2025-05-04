@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://kgpn6p545xe6"]
+
+[ext_resource type="PackedScene" uid="uid://ckqkrttd08sb8" path="res://Scenes/test_scene.tscn" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://bn6fdcfa3tspc" path="res://UI/inventory_UI.gd" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://cj6uv3puxa8g4" path="res://Entities/inventory_grid.gd" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://dmunscd7gqoo1" path="res://UI/inventory_container.tscn" id="4_fos0i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0du0"]
+
+[node name="Main" type="Node"]
+
+[node name="TestScene" parent="." instance=ExtResource("1_glv2v")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerUI" type="TabContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r0du0")
+tab_alignment = 1
+current_tab = 0
+
+[node name="Inventory" type="HBoxContainer" parent="CanvasLayer/PlayerUI"]
+layout_mode = 2
+script = ExtResource("2_uu6xs")
+metadata/_tab_index = 0
+
+[node name="Equipment" type="PanelContainer" parent="CanvasLayer/PlayerUI/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayerUI/Inventory/Equipment"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Equipment"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerUI/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PlayerUI/Inventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="InventoryGrid" type="GridContainer" parent="CanvasLayer/PlayerUI/Inventory/VBoxContainer/CenterContainer"]
+layout_mode = 2
+script = ExtResource("4_cm0pq")
+metadata/_custom_type_script = "uid://cj6uv3puxa8g4"
+
+[node name="InventoryContainer" parent="CanvasLayer/PlayerUI/Inventory" instance=ExtResource("4_fos0i")]
+layout_mode = 2
+
+[node name="Crafting" type="NinePatchRect" parent="CanvasLayer/PlayerUI"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

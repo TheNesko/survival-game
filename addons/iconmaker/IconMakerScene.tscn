@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dnxqqcsn3v5vb"]
 
 [ext_resource type="Script" uid="uid://bnx5wovr70ito" path="res://addons/iconmaker/icon_maker_scene.gd" id="1_25jt4"]
-[ext_resource type="ArrayMesh" uid="uid://dx78ofexiigtw" path="res://items/models/axe.res" id="2_yrgpx"]
+[ext_resource type="ArrayMesh" uid="uid://dx78ofexiigtw" path="res://items/Equipment/Forester's Axe/axe.res" id="2_yrgpx"]
 [ext_resource type="Shader" uid="uid://by4ojxos3cfuf" path="res://addons/iconmaker/remove_color.gdshader" id="3_yrgpx"]
 
 [sub_resource type="World3D" id="World3D_yrgpx"]
