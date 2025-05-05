@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckqkrttd08sb8"]
+[gd_scene load_steps=17 format=3 uid="uid://ckqkrttd08sb8"]
 
 [ext_resource type="Environment" uid="uid://474fuucwvhuj" path="res://enviroment/main_scene_environment.tres" id="1_bwjpn"]
 [ext_resource type="PackedScene" uid="uid://bc8mfluu54yop" path="res://Entities/player.tscn" id="2_ibmi3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c46flu6f28m1" path="res://items/Equipment/Forester's Axe/Forester's Axe.tscn" id="9_6bfml"]
 [ext_resource type="PackedScene" uid="uid://bwwhiouknlb4c" path="res://items/Equipment/Shield/Shield.tscn" id="10_0g4ye"]
 [ext_resource type="PackedScene" uid="uid://c1u8wsdb4icsm" path="res://items/Resources/Log/Log.tscn" id="11_soh27"]
+[ext_resource type="PackedScene" uid="uid://dl8vqpnacb3kw" path="res://items/Equipment/Backpack/Backpack.tscn" id="12_ibmi3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o3jxj"]
 
@@ -24,7 +25,7 @@ albedo_color = Color(0, 0.365307, 0.139487, 1)
 material = SubResource("StandardMaterial3D_0f027")
 orientation = 1
 
-[node name="TestScene" type="Node"]
+[node name="TestScene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_bwjpn")
@@ -112,3 +113,6 @@ transform = Transform3D(0.227926, 0, 0.973678, 0, 1, 0, -0.973678, 0, 0.227926, 
 
 [node name="Log4" parent="." instance=ExtResource("11_soh27")]
 transform = Transform3D(-0.475716, 0, 0.879599, 0, 1, 0, -0.879599, 0, -0.475716, -0.997953, 0.559674, -3.98703)
+
+[node name="Backpack" parent="." instance=ExtResource("12_ibmi3")]
+transform = Transform3D(0.605048, -0.709874, -0.36055, 0.761063, 0.648678, 0, 0.233881, -0.274402, 0.93274, -0.253888, 0.305848, -4.27977)

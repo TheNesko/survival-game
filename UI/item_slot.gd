@@ -1,29 +1,30 @@
 class_name ItemSlot
-extends Control
+extends TextureRect
 
-@export var item : Item
+@export var _item : Item = null
 
 var cell_size = 64
 
-@onready var texture_rect : TextureRect = get_node("TextureRect")
-
 func _ready() -> void:
-	display()
+	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	var parent = get_parent()
-	while true:
-		if parent is InventoryGrid:
-			if not parent.inventory: return
-			cell_size = parent.inventory.cell_size
-			break
-		parent = parent.get_parent()
+	cell_size = parent.inventory.cell_size
 	custom_minimum_size = Vector2(cell_size,cell_size)
+	display(_item)
 
-func display():
-	texture_rect = $TextureRect
-	texture_rect.texture = null
-	texture_rect.rotation_degrees = 0
-	if not item: return
-	texture_rect.texture = item.icon
-	texture_rect.set_size(item.get_dimensions(cell_size))
-	texture_rect.rotation_degrees = item.rotation
-	texture_rect.pivot_offset = Vector2i(cell_size/2,cell_size/2)
+func display(item=null):
+	_item = item
+	queue_redraw()
+	texture = null
+	rotation_degrees = 0
+	if not _item: return
+	texture = item.icon
+	set_deferred("size",item.get_dimensions(cell_size))
+	rotation_degrees = item.rotation
+	pivot_offset = Vector2i(cell_size/2,cell_size/2)
+
+func _draw() -> void:
+	if not _item: return
+	var rect_size = _item.get_dimensions(cell_size)
+	var rect = Rect2(Vector2.ZERO,rect_size)
+	#draw_texture_rect(_item.icon,rect,false)

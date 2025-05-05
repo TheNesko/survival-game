@@ -26,7 +26,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	interaction_ray.target_position.z = -reach
-	SignalManager.add_inventory.emit(inventory)
+	#SignalManager.add_inventory.emit(inventory)
 
 func _physics_process(delta):
 	_update_camera(delta)
@@ -41,8 +41,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Use"):
 		if interaction_target != null:
 			if interaction_target.has_method("pick_up"):
-				if inventory.add_item(interaction_target.pick_up()):
-					interaction_target.queue_free()
+				SignalManager.item_pickup.emit(interaction_target)
+				#if inventory.add_item(interaction_target.pick_up()):
+					#interaction_target.queue_free()
 	
 	$Hitbox/HitboxShape.disabled = true
 	if Input.is_action_just_pressed("primary"):

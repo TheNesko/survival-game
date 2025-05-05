@@ -7,12 +7,17 @@ var inventory_grids : Array[InventoryGrid]
 func _init() -> void:
 	SignalManager.opened_container.connect(open_container_inventory)
 	SignalManager.add_inventory.connect(add_inventory)
+	SignalManager.remove_inventory.connect(remove_inventory)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if DEBUG.visible: return
 	if Input.is_action_just_released("inventory"):
 		if get_parent().visible: close_inventory()
 		else: open_inventory()
+
+func _physics_process(delta: float) -> void:
+	for grid in inventory_grids:
+		grid._update()
 
 func open_inventory():
 	get_parent().visible = true
@@ -32,7 +37,7 @@ func remove_inventory(inventory:Inventory):
 	for grid in inventory_grids:
 		if grid.inventory == inventory:
 			inventory_grids.erase(grid)
-			grid.queue_free()
+			$InventoryContainer.remove_container(grid)
 
 func open_container_inventory(inventory:Inventory):
 	external_grid.set_inventory(inventory)

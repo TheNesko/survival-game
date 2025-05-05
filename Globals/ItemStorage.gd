@@ -35,6 +35,7 @@ func _get_files_in_folder(folder):
 				item.data = load(item_folder+file_name[0]+".tres")
 				item.scene = load(item_folder+file_name[0]+".tscn")
 				items.append(item)
+				item.data._ready()
 		file_name = dir.get_next()
 
 
@@ -58,11 +59,21 @@ func spawn_item(item_id:int,quantity:int,x:int,y:int,z:int):
 	var world = get_tree().root
 	for q in range(quantity):
 		var new_item = item.scene.instantiate()
+		new_item.data = item.data.duplicate()
 		if new_item.data == null: return
 		new_item.position = Vector3(x,y,z)
 		world.add_child(new_item)
 		await get_tree().create_timer(0.01).timeout
 	DEBUG.send_message("Spawned "+str(quantity)+" "+items[item_id].data.name)
 
-func _drop_item(item:Item,position:Vector3,quantity:int=1):
-	pass
+func _drop_item(item:Item,quantity:int=1):
+	var player = get_tree().get_first_node_in_group("Player")
+	var world = player.get_parent()
+	var item_scene = _get_item(item.id).scene
+	for q in range(quantity):
+		var new_item = item_scene.instantiate()
+		new_item.data = item
+		if new_item.data == null: return
+		new_item.position = player.global_position
+		world.add_child(new_item)
+		await get_tree().create_timer(0.01).timeout

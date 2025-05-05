@@ -36,15 +36,14 @@ gdscript/warnings/integer_division=0
 
 movie_writer/movie_file="E:/Develop/Recording/Recoding.avi"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/iconmaker/plugin.cfg")
-
 [global_group]
 
 Hotbar=""
 Inventory=""
 ItemSlots=""
+EquipmentSlot=""
+Equipment=""
+Player=""
 
 [input]
 

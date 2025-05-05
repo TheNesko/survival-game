@@ -10,26 +10,15 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
-[node name="ItemSlot" type="Control" groups=["ItemSlots"]]
+[node name="ItemSlot" type="TextureRect" groups=["ItemSlots"]]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 3
+anchors_preset = -1
 anchor_right = 0.056
 anchor_bottom = 0.099
 offset_right = -0.512001
 offset_bottom = -0.152
 grow_horizontal = 2
-mouse_filter = 1
 script = ExtResource("1_n6cxc")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

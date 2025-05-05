@@ -21,10 +21,15 @@ var origin : Vector2 = Vector2.ZERO
 @export var max_stack : int = 1
 @export var quantity : int = 1
 
+func _ready():
+	pass
 
 func use():
 	DEBUG.send_message("Used "+name)
 
+func deep_duplicate() -> Resource:
+	var new_resource := self.duplicate(true)
+	return new_resource
 
 func rotate_clockwise() -> Array[Vector2i]:
 	var rotated : Array[Vector2i]

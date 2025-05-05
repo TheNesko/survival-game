@@ -19,6 +19,7 @@ func set_inventory(new_value:Inventory):
 	inventory = new_value
 	inventory.item_added.connect(_update)
 	inventory.item_removed.connect(_update)
+	inventory.item_dropped.connect(drop_item)
 	if not get_children().is_empty():
 		for child in get_children():
 			child.queue_free()
@@ -27,7 +28,7 @@ func set_inventory(new_value:Inventory):
 		for row in inventory.rows:
 			var slot = PrefabStorage.item_slot.instantiate()
 			add_child(slot)
-			slot.item = inventory.grid[row][column]
+			slot._item = inventory.grid[row][column]
 	_update()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -50,20 +51,21 @@ func _gui_input(event: InputEvent) -> void:
 	var slot = get_slot(grid_pos.x,grid_pos.y)
 	if not slot: return
 	if Input.is_action_just_released("primary"):
-		if slot.item: slot.item.use()
+		if slot._item: slot._item.use()
 	elif Input.is_action_just_released("secondary"):
-		inventory._drop_item(slot.item)
+		inventory._drop_item(slot._item)
 
 func _notification(notification_type):
 	match notification_type:
 		NOTIFICATION_DRAG_END:
 			if not is_drag_successful() and drag_data:
 				var item = drag_data.original_item
-				drag_data.target.inventory.remove_item(drag_data.item)
+				if drag_data.target is EquipmentSlot:
+					get_tree().get_first_node_in_group("Equipment").remove_item(drag_data.item)
+				else: drag_data.target.inventory.remove_item(drag_data.item)
 				if drag_data.origin == self:
 					if not inventory.add_item(item):
-						var pos = inventory.get_parent().position  
-						ItemStorage.spawn_item(item.id,item.quantity,pos.x,pos.y,pos.z)
+						ItemStorage._drop_item(item,item.quantity)
 			drag_data = {}
 			queue_redraw()
 
@@ -74,12 +76,11 @@ func _update(_item=null):
 			var slot = get_slot(row,col)
 			if inventory.is_occupied(Vector2(row,col)):
 				var item = inventory.grid[row][col]
-				if item: slot.item = inventory.grid[row][col]
+				if not item: continue
 				if item.origin == Vector2(row,col):
-					slot.display()
+					slot.display(item)
 			else: 
-				slot.item = null
-				slot.display()
+				slot.display(null)
 
 func get_relative_mouse_position() -> Vector2:
 	var pos = get_viewport().get_mouse_position()
@@ -95,6 +96,8 @@ func get_slot(row:int,column:int) -> ItemSlot:
 	var slot = get_children()[row+(column*inventory.rows)] as ItemSlot
 	return slot
 
+func drop_item(item:Item):
+	ItemStorage._drop_item(item,item.quantity)
 
 func _set_drag_preview():
 	var preview_texture = TextureRect.new()
@@ -120,7 +123,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	if not inventory._is_in_grid(grid_pos): return
 	var drag_item = inventory.grid[grid_pos.x][grid_pos.y] as Item
 	if not drag_item: return
-	drag_data = {"item":drag_item.duplicate(),
+	drag_data = {"item":drag_item.deep_duplicate(),
 			"original_item":drag_item,
 			"origin":self,
 			"target":self}
@@ -146,15 +149,15 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 func _draw() -> void:
 	var color = Color(0.1,0.1,0.1,0.9)
 	if not drag_data: return
-	if drag_data.target != self: return
-	for cell in drag_data.item.shape:
-		var cell_size = inventory.cell_size
-		var mouse_pos = get_relative_mouse_position()
-		var grid_pos = inventory.get_grid_position(mouse_pos)
-		grid_pos += cell
-		var pos = grid_pos*cell_size
-		if not inventory._is_in_grid(grid_pos): continue
-		if inventory.is_occupied(grid_pos) or not can_drop:
-			color.r = 0.6
-		var rect = Rect2(pos.x,pos.y,cell_size,cell_size)
-		draw_rect(rect,color)
+	if drag_data.target == self:
+		for cell in drag_data.item.shape:
+			var cell_size = inventory.cell_size
+			var mouse_pos = get_relative_mouse_position()
+			var grid_pos = inventory.get_grid_position(mouse_pos)
+			grid_pos += cell
+			var pos = grid_pos*cell_size
+			if not inventory._is_in_grid(grid_pos): continue
+			if inventory.is_occupied(grid_pos) or not can_drop:
+				color.r = 0.5
+			var rect = Rect2(pos.x,pos.y,cell_size,cell_size)
+			draw_rect(rect,color)

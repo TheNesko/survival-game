@@ -1,6 +1,5 @@
 extends Control
 
-@export var base_inventory : Inventory
 
 var inventories : Array[Inventory] = []
 var inventory_panels : Array[InventoryGrid] = []
@@ -10,9 +9,6 @@ var is_opened = false
 @onready var cursor = $cursor 
 @onready var target_name = $target_name
 
-func _ready() -> void:
-	return
-	add_inventory(base_inventory)
 
 func _physics_process(_delta: float) -> void:
 	cursor.color = Color(1,1,1)
@@ -32,21 +28,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		if interaction.has_method("interact"):
 			interaction.interact()
 			#open_inventory()
-	if Input.is_action_just_pressed("hotbar_1"):
-		var item: Item = ItemStorage._get_item(0).data
-		base_inventory.add_item(item)
-	if Input.is_action_just_pressed("hotbar_2"):
-		var item: Item = ItemStorage._get_item(1).data
-		base_inventory.add_item(item)
-	if Input.is_action_just_pressed("hotbar_3"):
-		var item: Item = ItemStorage._get_item(2).data
-		base_inventory.add_item(item)
-	if Input.is_action_just_pressed("hotbar_4"):
-		var item: Item = ItemStorage._get_item(3).data
-		base_inventory.add_item(item)
-	if Input.is_action_just_pressed("hotbar_5"):
-		var item: Item = ItemStorage._get_item(4).data
-		base_inventory.add_item(item)
+	#if Input.is_action_just_pressed("hotbar_1"):
+		#var item: Item = ItemStorage._get_item(0).data
+		#base_inventory.add_item(item)
+	#if Input.is_action_just_pressed("hotbar_2"):
+		#var item: Item = ItemStorage._get_item(1).data
+		#base_inventory.add_item(item)
+	#if Input.is_action_just_pressed("hotbar_3"):
+		#var item: Item = ItemStorage._get_item(2).data
+		#base_inventory.add_item(item)
+	#if Input.is_action_just_pressed("hotbar_4"):
+		#var item: Item = ItemStorage._get_item(3).data
+		#base_inventory.add_item(item)
+	#if Input.is_action_just_pressed("hotbar_5"):
+		#var item: Item = ItemStorage._get_item(4).data
+		#base_inventory.add_item(item)
 
 func open_inventory():
 	for inv_panel in inventory_panels:

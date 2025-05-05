@@ -1,6 +1,7 @@
 class_name Inventory
 extends Node
 
+signal item_dropped(item:Item)
 signal item_added(item:Item)
 signal item_removed(item:Item)
 
@@ -11,10 +12,10 @@ var grid = []
 @export_range(1,8) var columns : int = 5
 @export_range(1,16) var rows : int = 5
 
-func _ready():
-	set_up()
-
-func set_up():
+func _init(row:int=rows,col:int=columns) -> void:
+	rows = row
+	columns = col
+	grid.clear()
 	grid.resize(rows)
 	for x in range(rows):
 		grid[x] = []
@@ -58,7 +59,7 @@ func remove_item_from_pos(grid_pos:Vector2i):
 
 func add_item_to_pos(item:Item,grid_pos:Vector2i):
 	if is_occupied(grid_pos): return false
-	item = item.duplicate()
+	item = item.deep_duplicate()
 	# check if item can be added in any of the 4 rotations
 	# if it then change can_add = true and break from the for loop
 	# then go through all the cells and assign the item to the grid positions
@@ -74,8 +75,16 @@ func add_item_to_pos(item:Item,grid_pos:Vector2i):
 func _drop_item(item:Item):
 	if not item: return
 	remove_item_from_pos(item.origin)
-	var pos = get_parent().global_position
-	ItemStorage.spawn_item(item.id,item.quantity,pos.x,pos.y,pos.z)
+	item_dropped.emit(item)
+
+func drop_all_items():
+	for col in columns:
+		for row in rows:
+			var item : Item = grid[row][col]
+			if not item: continue
+			if item.origin == Vector2(row,col):
+				remove_item_from_pos(Vector2i(row,col))
+				ItemStorage._drop_item(item,item.quantity)
 
 func _can_add_item(item:Item,grid_pos:Vector2i) -> bool:
 	# checks in all cells of the item shape fit in the grid

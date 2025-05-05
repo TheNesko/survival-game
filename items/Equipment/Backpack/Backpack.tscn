@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl8vqpnacb3kw"]
 
 [ext_resource type="Script" uid="uid://dx7xj1wpom46m" path="res://items/Scripts/Item.gd" id="1_upynf"]
-[ext_resource type="Resource" uid="uid://2oc0tbh14inr" path="res://items/Equipment/Backpack/Backpack.tres" id="2_kh34j"]
+[ext_resource type="Resource" uid="uid://ok5mbq8aw5em" path="res://items/Equipment/Backpack/Backpack.tres" id="2_kh34j"]
 [ext_resource type="ArrayMesh" uid="uid://cechl8q5fht0h" path="res://items/Equipment/Backpack/Spellbook.res" id="3_imurj"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c7hdm"]
